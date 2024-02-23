@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth.models import User
+#from django.contrib.auth.models import User
+from account.models import User #UserCustome
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
 from main.views import index
@@ -20,7 +21,7 @@ def signup(request):
                 user.save()
                 # Save session
                 login(request, user)
-                return redirect('project')
+                return redirect('projects')
             except IntegrityError:
                 return render(request, 'account/signup.html', {
                 'form': UserCreationForm,
@@ -53,4 +54,4 @@ def signin(request):
 
 def signout(request):
     logout(request)
-    return redirect(request, 'index')
+    return redirect('index')
