@@ -18,8 +18,8 @@ from django.contrib import admin
 from django.urls import path
 from main.views import index
 from account.views import signup, signin, signout
-from project.views import project
-from task.views import task
+from project.views import project, create_project
+from task.views import task, create_task
 
 
 urlpatterns = [
@@ -29,5 +29,7 @@ urlpatterns = [
     path('signin/', signin, name='signin'),
     path('logout/', signout, name='logout'),
     path('projects/', project, name='projects'),
+    path('projects/create_project/', create_project, name='create_project'),
     path('tasks/', task, name='tasks'),
+    path('tasks/create_task/', create_task, name='create_task'),
 ]

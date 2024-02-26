@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>CREATE NEW PROJECT</h1>
+
+    {{ error }}
+    
+    <form action="/projects/create_project/" method="POST">
+
+        {% csrf_token %}
+
+            {{form.as_p}}
+
+            <button>
+                Save
+            </button>
+
+    </form>
+
+{% endblock %}
