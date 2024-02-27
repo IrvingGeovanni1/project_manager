@@ -4,4 +4,29 @@
 
     <h1>TASKS</h1>
 
+    <ul>
+        {% for task in tasks %}
+
+        <li>
+            {% if task.complete %}
+                <strong>{{ task.title }}</strong>
+            {% else %}
+                {{ task.title }}
+            {% endif %}
+
+            <p>{{ task.description }}</p>
+            <p>{{ project.date_complete }}</p>
+
+            <p>{{ task.project.name_project }}</p>
+
+            {% if task.complete %}
+                <p>Complete</p>
+            {% else %}
+                <p>Pending</p>
+            {% endif %}
+
+            <p>{{ task.created_ad }}</p>
+        </li>
+        {% endfor %}
+    </ul>
 {% endblock %}

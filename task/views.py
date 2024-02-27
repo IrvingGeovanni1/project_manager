@@ -1,10 +1,15 @@
 from django.shortcuts import render, redirect
 from .forms import TaskForm
+from .models import Task
 
 # Create your views here.
 
 def task(request):
-    return render(request, 'task/task.html')
+    # Shoe list Tasks
+    tasks = Task.objects.all()
+    return render(request, 'task/task.html', {
+        'tasks': tasks
+    })
 
 def create_task(request):
     if request.method == 'GET':
