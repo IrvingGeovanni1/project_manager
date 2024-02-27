@@ -4,4 +4,28 @@
 
     <h1>PROJECTS</h1>
 
+    <ul>
+
+        {% for project in projects %}
+        <li>
+            {% if project.complete %}
+                <strong>{{ project.name_project }}</strong>
+            {% else %}
+                {{ project.name_project }}
+            {% endif %}
+
+            <p>{{ project.category }}</p>
+            <p>{{ project.date_complete }}</p>
+
+            {% if project.complete %}
+                <p>Complete</p>
+            {% else %}
+                <p>Pending</p>
+            {% endif %}
+
+            <p>{{ project.created_at }}</p>
+        </li>
+        {% endfor %}
+
+    </ul>
 {% endblock %}
