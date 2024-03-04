@@ -5,10 +5,17 @@ from .models import Project
 # Create your views here.
 
 def project(request):
-    # Show list Project
+    # Show list Projects
     projects = Project.objects.filter(user=request.user)
     return render(request, 'project/project.html',{
         'projects': projects
+    })
+
+# Show detail for proyect_id
+def project_detail(request, project_id):
+    project = Project.objects.get(pk = project_id)
+    return render(request, 'project/project_detail.html', {
+        'project': project
     })
 
 def create_project(request):
