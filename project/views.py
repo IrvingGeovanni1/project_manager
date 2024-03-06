@@ -1,6 +1,8 @@
-from django.shortcuts import render, redirect
+from typing import Any
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import ProjectForm
 from .models import Project
+from django.views.generic.detail import DetailView
 
 # Create your views here.
 
@@ -12,11 +14,13 @@ def project(request):
     })
 
 # Show detail for proyect_id
+
 def project_detail(request, project_id):
-    project = Project.objects.get(pk = project_id)
-    return render(request, 'project/project_detail.html', {
-        'project': project
-    })
+        # Searching model project
+        project = get_object_or_404(Project, pk = project_id)
+        return render(request, 'project/project_detail.html', {
+            'project': project
+        })
 
 def create_project(request):
     if request.method == 'GET':

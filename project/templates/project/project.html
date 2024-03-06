@@ -8,22 +8,21 @@
 
         {% for project in projects %}
         <li>
-            {% if project.complete %}
-                <strong>{{ project.name_project }}</strong>
-            {% else %}
-                {{ project.name_project }}
-            {% endif %}
+            <a href="{% url 'project_detail' project.project_id %}">
+                {{project.name_project}}
+            </a>
 
-            <p>{{ project.category }}</p>
-            <p>{{ project.date_complete }}</p>
+                <p>{{ project.category }}</p>
+                <p>{{ project.date_complete }}</p>
 
-            {% if project.complete %}
-                <p>Complete</p>
-            {% else %}
-                <p>Pending</p>
-            {% endif %}
+                {% if project.complete %}
+                    <p>Complete</p>
+                {% else %}
+                    <p>Pending</p>
+                {% endif %}
 
-            <p>{{ project.created_at }}</p>
+                <p>{{ project.created_at }}</p>
+
         </li>
         {% endfor %}
 
