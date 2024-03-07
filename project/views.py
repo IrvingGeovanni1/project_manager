@@ -16,11 +16,29 @@ def project(request):
 # Show detail for proyect_id
 
 def project_detail(request, project_id):
-        # Searching model project
-        project = get_object_or_404(Project, pk = project_id)
-        return render(request, 'project/project_detail.html', {
-            'project': project
-        })
+        if request.method == 'GET':
+             # Searching model project
+            project = get_object_or_404(Project, pk = project_id, user=request.user)
+            # Create Project Form from Project Detail
+            form = ProjectForm(instance=project)
+            return render(request, 'project/project_detail.html', {
+                'project': project,
+                'form': form
+            })
+        else:
+             try:
+                # Update Project
+                print(request.POST) # Impresión en consola
+                project = get_object_or_404(Project, pk=project_id, user=request.user)
+                form = ProjectForm(request.POST, instance=project)
+                form.save()
+                return redirect('projects')
+             except ValueError:
+                 return render(request, 'project/project_detail.html',{
+                     'project': project,
+                     'form': form,
+                     'error': "Error updating projects"
+                 })
 
 def create_project(request):
     if request.method == 'GET':
@@ -39,3 +57,4 @@ def create_project(request):
                 'form': ProjectForm,
                 'error': 'Please provide valida data',
             })
+        

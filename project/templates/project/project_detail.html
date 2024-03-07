@@ -4,8 +4,16 @@
 
     <h1>{{ project.name_project }}</h1>
 
-    <p>{{ project.category }}</p>
+    {{ error }}
 
-    <p>{{ project.date_complete }}</p>
+    <form action="" method="POST">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button>
+            Update
+        </button>
+    </form>
     
 {% endblock %}
