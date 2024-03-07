@@ -8,11 +8,9 @@
         {% for task in tasks %}
 
         <li>
-            {% if task.complete %}
-                <strong>{{ task.title }}</strong>
-            {% else %}
+            <a href="{% url 'task_detail' task.id_task %}">
                 {{ task.title }}
-            {% endif %}
+            </a>
 
             <p>{{ task.description }}</p>
             <p>{{ project.date_complete }}</p>

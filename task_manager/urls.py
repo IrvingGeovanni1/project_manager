@@ -19,7 +19,7 @@ from django.urls import path
 from main.views import index
 from account.views import signup, signin, signout
 from project.views import project, create_project, project_detail
-from task.views import task, create_task
+from task.views import task, create_task, task_detail
 
 
 urlpatterns = [
@@ -32,5 +32,6 @@ urlpatterns = [
     path("projects/<int:project_id>/", project_detail, name="project_detail"),
     path('projects/create_project/', create_project, name='create_project'),
     path('tasks/', task, name='tasks'),
+    path('tasks/<int:task_id>', task_detail, name='task_detail'),
     path('tasks/create_task/', create_task, name='create_task'),
 ]
