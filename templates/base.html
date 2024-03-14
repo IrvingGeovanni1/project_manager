@@ -9,17 +9,22 @@
 
     <ul>
         <li>
-            <a href="/">
+            <a href="{% url 'index' %}">
                 Home
             </a>
         </li>
         <li>
-            <a href="/projects">
-                Projects
+            <a href="{% url 'projects' %}">
+                Projects Pending
             </a>
         </li>
         <li>
-            <a href="/projects/create_project">Create project</a>
+            <a href="{% url 'projects_completed' %}">
+                Projects complete
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'create_project' %}">Create project</a>
         </li>
         <li>
             <a href="/tasks">

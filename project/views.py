@@ -4,8 +4,7 @@ from .forms import ProjectForm
 from .models import Project
 from django.utils import timezone
 
-# Create your views here.
-
+# Show Projects pending
 def project(request):
     # Show list Projects
     projects = Project.objects.filter(user=request.user, date_complete__isnull=True)
@@ -13,8 +12,15 @@ def project(request):
         'projects': projects
     })
 
-# Show detail for proyect_id
+# Show Projects completed
+def projects_completed(request):
+    # Order by date completed
+    projects = Project.objects.filter(user=request.user, date_complete__isnull=False).order_by('-date_complete')
+    return render(request, 'project/project.html', {
+        'projects':projects
+    })
 
+# Show detail for proyect_id
 def project_detail(request, project_id):
         if request.method == 'GET':
              # Searching model project
@@ -40,6 +46,7 @@ def project_detail(request, project_id):
                      'error': "Error updating projects"
                  })
 
+# Create new Project
 def create_project(request):
     if request.method == 'GET':
         return render(request, 'project/create_project.html', {
