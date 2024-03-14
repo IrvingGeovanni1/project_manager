@@ -2,13 +2,13 @@ from typing import Any
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import ProjectForm
 from .models import Project
-from django.views.generic.detail import DetailView
+from django.utils import timezone
 
 # Create your views here.
 
 def project(request):
     # Show list Projects
-    projects = Project.objects.filter(user=request.user)
+    projects = Project.objects.filter(user=request.user, date_complete__isnull=True)
     return render(request, 'project/project.html',{
         'projects': projects
     })
@@ -28,7 +28,7 @@ def project_detail(request, project_id):
         else:
              try:
                 # Update Project
-                print(request.POST) # Impresión en consola
+                #print(request.POST) # Impresión en consola
                 project = get_object_or_404(Project, pk=project_id, user=request.user)
                 form = ProjectForm(request.POST, instance=project)
                 form.save()
@@ -57,4 +57,20 @@ def create_project(request):
                 'form': ProjectForm,
                 'error': 'Please provide valida data',
             })
-        
+
+# Complete Project 
+def complete_project(request, project_id):
+    project = get_object_or_404 (Project, pk=project_id, user=request.user)
+    if request.method == 'POST':
+        # Update field Date Complete
+        project.date_complete = timezone.now()
+        print("Posterio DC: " + str(project.date_complete))
+        project.save()
+        return redirect('projects')
+    
+# Delete Project
+def delete_project(request, project_id):
+    project = get_object_or_404 (Project, pk=project_id, user=request.user)
+    if request.method == 'POST':
+        project.delete()
+        return redirect('projects')

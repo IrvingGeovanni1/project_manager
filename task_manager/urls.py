@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from main.views import index
 from account.views import signup, signin, signout
-from project.views import project, create_project, project_detail
+from project.views import project, create_project, project_detail, complete_project, delete_project
 from task.views import task, create_task, task_detail
 
 
@@ -30,6 +30,8 @@ urlpatterns = [
     path('logout/', signout, name='logout'),
     path('projects/', project, name='projects'),
     path("projects/<int:project_id>/", project_detail, name="project_detail"),
+    path("projects/<int:project_id>/complete", complete_project, name='complete_project'),
+    path("projects/<int:project_id>/delete", delete_project, name='delete_project'),
     path('projects/create_project/', create_project, name='create_project'),
     path('tasks/', task, name='tasks'),
     path('tasks/<int:task_id>', task_detail, name='task_detail'),

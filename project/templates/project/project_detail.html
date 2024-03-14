@@ -6,7 +6,7 @@
 
     {{ error }}
 
-    <form action="" method="POST">
+    <form method="POST">
         {% csrf_token %}
 
         {{ form.as_p }}
@@ -15,5 +15,22 @@
             Update
         </button>
     </form>
+    <p>
+        <form action="{% url 'complete_project' project.project_id %}" method="POST">
+            {% csrf_token %}
+            <button>
+                Complete
+            </button>
+        </form>    
+    </p>
+
+    <p>
+        <form action="{% url 'complete_project' project.project_id %}" method="POST">
+            {% csrf_token %}
+            <button>
+                Delete
+            </button>
+        </form>
+    </p>
     
 {% endblock %}

@@ -6,8 +6,15 @@ from .models import Project
 class ProjectForm(ModelForm):
     class Meta:
         model = Project
-        fields = ['name_project', 'category', 'date_complete']
+        fields = [
+            'name_project',
+            'category',
+            #'date_complete', # Campo de prueba
+            'complete',# Campo de prueba
+            ]
         # Create Form date type
-        widgets = {
+        """widgets = {
             'date_complete': DateTimeInput(attrs={'type': 'date'}),
-        }
+        }"""
+
+""" Los campos de prueba despues se implementarán con funciones mas complejas"""
