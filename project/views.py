@@ -3,8 +3,12 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .forms import ProjectForm
 from .models import Project
 from django.utils import timezone
+from django.contrib.auth.decorators import login_required
+
+"""@login_required -> This code protected the acces of especific functions"""
 
 # Show Projects pending
+@login_required
 def project(request):
     # Show list Projects
     projects = Project.objects.filter(user=request.user, date_complete__isnull=True)
@@ -13,6 +17,7 @@ def project(request):
     })
 
 # Show Projects completed
+@login_required
 def projects_completed(request):
     # Order by date completed
     projects = Project.objects.filter(user=request.user, date_complete__isnull=False).order_by('-date_complete')
@@ -21,6 +26,7 @@ def projects_completed(request):
     })
 
 # Show detail for proyect_id
+@login_required
 def project_detail(request, project_id):
         if request.method == 'GET':
              # Searching model project
@@ -47,6 +53,7 @@ def project_detail(request, project_id):
                  })
 
 # Create new Project
+@login_required
 def create_project(request):
     if request.method == 'GET':
         return render(request, 'project/create_project.html', {
@@ -66,6 +73,7 @@ def create_project(request):
             })
 
 # Complete Project 
+@login_required
 def complete_project(request, project_id):
     project = get_object_or_404 (Project, pk=project_id, user=request.user)
     if request.method == 'POST':
@@ -76,6 +84,7 @@ def complete_project(request, project_id):
         return redirect('projects')
     
 # Delete Project
+@login_required
 def delete_project(request, project_id):
     project = get_object_or_404 (Project, pk=project_id, user=request.user)
     if request.method == 'POST':
