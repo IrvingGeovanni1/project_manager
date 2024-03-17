@@ -11,6 +11,20 @@
 
         {{ form.as_p }}
 
+        <p>
+            <h3>Tasks list</h3>
+
+            {% for task in tasks %}
+    
+            <p>
+                <a href="{% url 'task_detail' task.id_task %}">
+                    {{ task.title }}
+                </a>
+            </p>
+    
+            {% endfor %}
+            
+        </p>
         <button>
             Update
         </button>
