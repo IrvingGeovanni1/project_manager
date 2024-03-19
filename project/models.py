@@ -15,4 +15,4 @@ class Project(models.Model):
     
     # show Project name
     def __str__(self):
-        return self.name_project + ' by ' + self.user.username
+        return self.name_project

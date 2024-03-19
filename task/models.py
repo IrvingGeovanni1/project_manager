@@ -15,4 +15,4 @@ class Task(models.Model):
 
     # Show title
     def __str__(self):
-        return self.title + ' - ' + self.project.name_project
+        return self.title
