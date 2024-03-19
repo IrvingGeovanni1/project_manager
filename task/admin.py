@@ -5,7 +5,7 @@ from .models import Task
 class TaskAdmin(admin.ModelAdmin):
     readonly_fields = (
         "created_at",
-        "update_at"
+        "updated_at"
     )
 
 # Register your models here.

@@ -11,7 +11,7 @@ class Project(models.Model):
     complete = models.BooleanField(default=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
-    update_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True)
     
     # show Project name
     def __str__(self):

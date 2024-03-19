@@ -1,4 +1,3 @@
-from typing import Any
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import ProjectForm
 from .models import Project
@@ -6,7 +5,7 @@ from task.models import Task
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 
-"""@login_required -> This code protected the acces of especific functions"""
+"""@login_required -> This code protected the access of especific functions"""
 
 # Show Projects pending
 @login_required

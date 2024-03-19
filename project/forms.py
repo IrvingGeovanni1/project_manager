@@ -9,8 +9,6 @@ class ProjectForm(ModelForm):
         fields = [
             'name_project',
             'category',
-            #'date_complete', # Campo de prueba
-            'complete',# Campo de prueba
             ]
         # Create Form date type
         """widgets = {

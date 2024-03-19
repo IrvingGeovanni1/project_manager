@@ -11,6 +11,8 @@
 
         {{ form.as_p }}
 
+        {% if tasks %}
+        <!-- código aquí para listar las tareas -->
         <p>
             <h3>Tasks list</h3>
 
@@ -25,6 +27,14 @@
             {% endfor %}
             
         </p>
+          {% else %}
+        <p>No hay Tareas en el Proyecto.</p>
+          {% endif %}
+
+        <p>Created at: {{ project.created_at }}</p>
+
+        <p>Updated at: {{ project.updated_at }}</p>
+      
         <button>
             Update
         </button>

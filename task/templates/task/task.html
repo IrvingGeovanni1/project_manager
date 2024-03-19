@@ -17,13 +17,10 @@
 
             <p>{{ task.project.name_project }}</p>
 
-            {% if task.complete %}
-                <p>Complete</p>
-            {% else %}
-                <p>Pending</p>
-            {% endif %}
+            <p>{{ task.created_at }}</p>
 
-            <p>{{ task.created_ad }}</p>
+            <p>{{ task.updated_at }}</p>
+            
         </li>
         {% endfor %}
     </ul>

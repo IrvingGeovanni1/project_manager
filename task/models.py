@@ -11,7 +11,7 @@ class Task(models.Model):
     date_complete = models.DateTimeField(null=True, blank=True)
     project = models.ForeignKey(Project,on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
-    update_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     # Show title
     def __str__(self):

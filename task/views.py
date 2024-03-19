@@ -2,10 +2,14 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .forms import TaskForm
 from .models import Task
 
+from django.contrib.auth.decorators import login_required
+
+"""@login_required -> This code protected the access of especific functions"""
+
 # Create your views here.
 
 def task(request):
-    # Shoe list Tasks
+    # Show list Tasks
     tasks = Task.objects.all()
     return render(request, 'task/task.html', {
         'tasks': tasks
