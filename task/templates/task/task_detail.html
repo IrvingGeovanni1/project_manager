@@ -4,7 +4,56 @@
 
     <h1>{{ task.title }}</h1>
 
-    <p>{{ task.description }}</p>
+    {{ error }}
+
+    {% if not task.date_completed %}
+
+        <form method="POST">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+            
+            <button>
+                Update
+            </button>
+        </form>
+
+        <p>
+            <form action="{% url 'complete_task' task.id_task %}" method="POST">
+                {% csrf_token %}
+                <button>
+                    Complete
+                </button>
+            </form>
+        </p>
+
+    {% else %}
+
+        <p>Description: {{ task.description }}</p>
+
+        <p>Date Completed: {{ task.date_completed}}</p>
+
+        <p>
+            <form action="{% url 'uncomplete_task' task.id_task %}" method="POST">
+                {% csrf_token %}
+
+                <button>
+                    Uncomplete
+                </button>
+                
+            </form>
+        </p>
+    
+    {% endif %}
+
+    <p>
+        <form action="{% url 'delete_task' task.id_task %}" method="POST">
+            {% csrf_token %}
+            <button>
+                Delete
+            </button>
+        </form>
+    </p>
 
     <p>{{ task.created_at }}</p>
 

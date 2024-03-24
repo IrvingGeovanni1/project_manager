@@ -2,26 +2,43 @@
 
 {% block content %}
 
-    <h1>TASKS</h1>
+    <h1>{{ title }}</h1>
 
-    <ul>
-        {% for task in tasks %}
+    {% if tasks %}
 
-        <li>
-            <a href="{% url 'task_detail' task.id_task %}">
-                {{ task.title }}
-            </a>
+        <ul>
+            {% for task in tasks %}
 
-            <p>{{ task.description }}</p>
-            <p>{{ project.date_complete }}</p>
+            {# {% if task.project.user == user %} #}
 
-            <p>{{ task.project.name_project }}</p>
+                <li>
+                    <a href="{% url 'task_detail' task.id_task %}">
+                        {{ task.title }}
+                    </a>
 
-            <p>{{ task.created_at }}</p>
+                    <p>{{ task.description }}</p>
 
-            <p>{{ task.updated_at }}</p>
+                    <p>Completado en:
+                        {% if task.date_completed %}
+                            {{ task.date_completed }}</p>
+                        {% endif %}
+
+                    <p>{{ task.project.name_project }}</p>
+
+                    <p>{{ task.created_at }}</p>
+
+                    <p>{{ task.updated_at }}</p>
+                    
+                </li>
             
-        </li>
-        {% endfor %}
-    </ul>
+            {# {% endif %} #}
+            {% endfor %}
+        </ul>
+    
+    {% else %}
+
+        <p>There aren't {{ title }}</p>
+
+    {% endif %}
+
 {% endblock %}

@@ -10,18 +10,22 @@ from django.contrib.auth.decorators import login_required
 # Show Projects pending
 @login_required
 def project(request):
-    projects = Project.objects.filter(user=request.user, date_complete__isnull=True)
+    title = 'Pending Projects'
+    projects = Project.objects.filter(user=request.user, date_completed__isnull=True)
     # Show list Projects
     return render(request, 'project/project.html',{
+        'title': title,
         'projects': projects
     })
 
 # Show Projects completed
 @login_required
 def projects_completed(request):
+    title = 'Completed Projects'
     # Order by date completed
-    projects = Project.objects.filter(user=request.user, date_complete__isnull=False).order_by('-date_complete')
+    projects = Project.objects.filter(user=request.user, date_completed__isnull=False).order_by('-date_completed')
     return render(request, 'project/project.html', {
+        'title': title,
         'projects':projects
     })
 
@@ -80,10 +84,19 @@ def complete_project(request, project_id):
     project = get_object_or_404 (Project, pk=project_id, user=request.user)
     if request.method == 'POST':
         # Update field Date Complete
-        project.date_complete = timezone.now()
-        print("Posterio DC: " + str(project.date_complete))
+        project.date_completed = timezone.now()
         project.save()
         return redirect('projects')
+    
+# Return to uncompleted Project
+@login_required
+def uncomplete_project(request, project_id):
+    project = get_object_or_404(Project, pk=project_id)
+    if request.method == 'POST':
+        # Uncomplete Project
+        project.date_completed = None
+        project.save()
+        return redirect('projects_completed')
     
 # Delete Project
 @login_required
@@ -91,4 +104,4 @@ def delete_project(request, project_id):
     project = get_object_or_404 (Project, pk=project_id, user=request.user)
     if request.method == 'POST':
         project.delete()
-        return redirect('projects')
+        return redirect('index')

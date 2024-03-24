@@ -2,21 +2,29 @@
 
 {% block content %}
 
-    <h1>PROJECTS PENDIDNG</h1>
+    <h1>{{ title }}</h1>
 
-    <ul>
+    {% if projects %}
 
-        {% for project in projects %}
-        <li>
-            <a href="{% url 'project_detail' project.project_id %}">
-                {{project.name_project}}
-            </a>
+        <ul>
 
-                <p>{{ project.category }}</p>
-                
-                <p>{{ project.date_complete|date:'M j Y:i'}}</p>
-        </li>
-        {% endfor %}
+            {% for project in projects %}
+            <li>
+                <a href="{% url 'project_detail' project.project_id %}">
+                    {{project.name_project}}
+                </a>
 
-    </ul>
+                    <p>{{ project.category }}</p>
+                    
+                    <p>{{ project.date_completed|date:'M j Y:i'}}</p>
+            </li>
+            {% endfor %}
+
+        </ul>
+
+    {% else %}
+
+        <p>There aren't {{ title }}</p>
+
+    {% endif %}
 {% endblock %}
