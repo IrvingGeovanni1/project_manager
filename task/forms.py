@@ -10,7 +10,7 @@ class TaskForm(ModelForm):
         super(TaskForm, self).__init__(*args, **kwargs)
         if user:
             self.fields['project'].queryset = Project.objects.filter(user=user)
-            
+
     class Meta:
         model = Task
         fields = ['title',

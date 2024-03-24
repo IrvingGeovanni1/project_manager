@@ -51,6 +51,7 @@ def task_detail(request,task_id):
         task = get_object_or_404(Task, pk = task_id)
         # Create Task Form from Task Detail
         form = TaskForm(instance=task, user = request.user)
+        print(form)
         return render(request, 'task/task_detail.html', {
             'task': task,
             'form': form,
@@ -73,19 +74,19 @@ def task_detail(request,task_id):
 @login_required
 def create_task(request):
     if request.method == 'GET':
+        form = TaskForm(user = request.user)
         return render(request, 'task/create_task.html', {
-            'form': TaskForm,
+            'form': form,
         })
     else:
         try:
-
-            form = TaskForm(request.POST)
+            form = TaskForm(request.POST, user = request.user)
             new_task = form.save(commit=False)
             new_task.save()
             return redirect('projects')
         except ValueError:
             return render(request, 'task/create_task.html',{
-                'form': TaskForm,
+                'form': form,
                 'error': 'Please provide valida data'
             })
         
