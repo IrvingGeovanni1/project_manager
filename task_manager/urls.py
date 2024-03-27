@@ -15,32 +15,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from main.views import index
+from django.urls import path, include
 from account.views import signup, signin, signout
 from project.views import project, create_project, project_detail, complete_project, delete_project, projects_completed, uncomplete_project
-from task.views import task, create_task, task_detail, tasks_completed, complete_task, delete_task, uncomplete_task
 
-
+# Modulanting URLs
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index, name='index'),
-    path('signup/', signup, name='signup'),
-    path('signin/', signin, name='signin'),
-    path('logout/', signout, name='logout'),
-    path('projects/', project, name='projects'),
-    path('projects_completed/', projects_completed, name='projects_completed'),
-    path("projects/<int:project_id>/", project_detail, name="project_detail"),
-    path("projects/<int:project_id>/complete", complete_project, name='complete_project'),
-    path('projects/<int:project_id>/uncomplete', uncomplete_project, name='uncomplete_project'),
-    path("projects/<int:project_id>/delete", delete_project, name='delete_project'),
-    path('projects/create_project/', create_project, name='create_project'),
-    path('tasks/', task, name='tasks'),
-    path('tasks_completed', tasks_completed, name='tasks_completed'),
-    path('tasks/<int:task_id>/complete', complete_task, 
-    name='complete_task'),
-    path('tasks/<int:task_id>/uncomplete', uncomplete_task, name='uncomplete_task'),
-    path('tasks/<int:task_id>/delete', delete_task, name='delete_task'),
-    path('tasks/<int:task_id>', task_detail, name='task_detail'),
-    path('tasks/create_task/', create_task, name='create_task'),
+    path('home/', include('main.urls')),
+    path('account/', include('account.urls')),
+    path('projects/', include('project.urls')),
+    path('tasks/', include('task.urls')),
 ]

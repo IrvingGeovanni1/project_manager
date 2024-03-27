@@ -56,6 +56,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'task_manager.urls'
 
+""" Add the tamplates of the new Apps"""
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -126,8 +127,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-# Redirected to login for protect paths
-LOGIN_URL = '/signin'
+# Redirected to login for protect paths - See the module's urls.py file to log in.
+LOGIN_URL = '/account/signin'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

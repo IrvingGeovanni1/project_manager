@@ -4,9 +4,8 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from account.models import User #UserCustome
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
-from main.views import index
 
-# Create your views here.
+# Create Account's views
 
 def signup(request):
     if request.method == 'GET':
@@ -54,4 +53,4 @@ def signin(request):
 
 def signout(request):
     logout(request)
-    return redirect('index')
+    return redirect('home')
