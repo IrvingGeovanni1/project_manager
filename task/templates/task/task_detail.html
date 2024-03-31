@@ -31,7 +31,7 @@
 
         <p>Description: {{ task.description }}</p>
 
-        <p>Date Completed: {{ task.date_completed}}</p>
+        <p>Date Completed: {{ task.date_completed|date:'M d Y' }}</p>
 
         <p>
             <form action="{% url 'uncomplete_task' task.id_task %}" method="POST">
@@ -50,14 +50,14 @@
         <form action="{% url 'delete_task' task.id_task %}" method="POST">
             {% csrf_token %}
             <button>
-                Delete
+                Delete Task
             </button>
         </form>
     </p>
 
-    <p>{{ task.created_at }}</p>
+    <p>Create at: {{ task.created_at|date:'M d Y' }}</p>
 
-    <p>{{ task.updated_at }}</p>
+    <p>Update at: {{ task.updated_at|date:'M d Y' }}</p>
 
     <p><a href="{% url 'project_detail' task.project.project_id %}">Back to Project</a></p>
     

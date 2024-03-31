@@ -60,24 +60,28 @@
             </p>
 
             {% endfor %}
-            
         </p>
     {% else %}
         <p>No hay Tareas en el Proyecto.</p>
     {% endif %}
 
+    <p>
+        <form action="{% url 'create_task' %}">
+            <button>Create Task</button>
+        </form>
+    </p>
 
     <p>
         <form action="{% url 'delete_project' project.project_id %}" method="POST">
             {% csrf_token %}
             <button>
-                Delete
+                Delete Project
             </button>
         </form>
     </p>
 
-    <p>Created at: {{ project.created_at }}</p>
+    <p>Created at: {{ project.created_at|date:'M d Y'  }}</p>
 
-     <p>Updated at: {{ project.updated_at }}</p>
+    <p>Updated at: {{ project.updated_at|date:'M d Y'  }}</p>
         
 {% endblock %}

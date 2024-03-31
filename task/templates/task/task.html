@@ -25,9 +25,9 @@
 
                     <p>{{ task.project.name_project }}</p>
 
-                    <p>{{ task.created_at }}</p>
+                    <p>Created at: {{ task.created_at|date:'M d Y' }}</p>
 
-                    <p>{{ task.updated_at }}</p>
+                    <p>Update at: {{ task.updated_at|date:'M d Y' }}</p>
                     
                 </li>
             

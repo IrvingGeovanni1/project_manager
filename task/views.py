@@ -33,8 +33,8 @@ def tasks_completed(request):
     pro = Project.objects.filter(user=request.user)
     # Order by date completed
     tasks = Task.objects.filter(date_completed__isnull=False, project__in = pro).order_by('-date_completed')
-    no_completed_tasks = not tasks.exists()
-    """print(no_completed_tasks)
+    """no_completed_tasks = not tasks.exists()
+    print(no_completed_tasks)
     if not no_completed_tasks:
         for task in tasks:
             print('Titulo:', task.title, '| Fecha de completado:', task.date_completed)"""
@@ -51,7 +51,6 @@ def task_detail(request,task_id):
         task = get_object_or_404(Task, pk = task_id)
         # Create Task Form from Task Detail
         form = TaskForm(instance=task, user = request.user)
-        print(form)
         return render(request, 'task/task_detail.html', {
             'task': task,
             'form': form,

@@ -14,9 +14,13 @@
                     {{project.name_project}}
                 </a>
 
-                    <p>{{ project.category }}</p>
+                    <p>Category: {{ project.category }}</p>
                     
-                    <p>{{ project.date_completed|date:'M j Y:i'}}</p>
+                    <p>Date Completed: {{ project.date_completed|date:'M d Y' }}</p>
+
+                    <p>Created at: {{ project.created_at|date:'M d Y' }}</p>
+
+                    <p>Updated at: {{ project.updated_at|date:'M d Y' }}</p>
             </li>
             {% endfor %}
 

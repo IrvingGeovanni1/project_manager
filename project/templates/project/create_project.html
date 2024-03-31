@@ -6,7 +6,7 @@
 
     {{ error }}
     
-    <form action="/projects/create_project/" method="POST">
+    <form action="{% url 'create_project' %}" method="POST">
 
         {% csrf_token %}
 
