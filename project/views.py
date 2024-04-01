@@ -11,23 +11,92 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def project(request):
     title = 'Pending Projects'
-    projects = Project.objects.filter(user=request.user, date_completed__isnull=True)
-    # Show list Projects
-    return render(request, 'project/project.html',{
-        'title': title,
-        'projects': projects
-    })
+
+    # Get User's Projects
+    projects = Project.objects.filter(user=request.user)
+
+    # Evaluate each project individually
+    for project in projects:
+        print('1Projecto original ' + str(project) + ' - Atributo complete ' + str(project.date_completed))
+        tasks_count = project.task_set.count()
+        completed_tasks_count = project.task_set.filter(date_completed__isnull=False).count()
+    
+        # If the project has not tasks or if all of its tasks are incomplete
+        if tasks_count == 0 or tasks_count != completed_tasks_count:
+            project.complete = False
+            project.date_completed = None
+            project.save()
+            print('2Projecto modificado ' + str(project) + ' - Atributo complete ' + str(project.date_completed))
+        else:
+        # If the Project has all complete task    
+            project.complete = True
+            project.date_completed = timezone.now()
+            project.save()
+            print('3Projecto modificado ' + str(project) + ' - Atributo complete ' + str(project.date_completed))
+
+    # If Project is uncomplete
+    if project.complete:
+        # Filter Projects for date completed
+        projects_pending = projects.filter(user=request.user, date_completed__isnull=True)
+
+        # Show list Projects
+        return render(request, 'project/project.html',{
+            'title': title,
+            'projects': projects_pending
+        })
+    else:
+    # If Project is complete
+        projects = Project.objects.filter(user=request.user, date_completed__isnull=True)
+        # Show list Projects
+        return render(request, 'project/project.html', {
+            'title': title,
+            'projects': projects,
+        })
 
 # Show Projects completed
 @login_required
 def projects_completed(request):
     title = 'Completed Projects'
-    # Order by date completed
-    projects = Project.objects.filter(user=request.user, date_completed__isnull=False).order_by('-date_completed')
-    return render(request, 'project/project.html', {
-        'title': title,
-        'projects':projects
-    })
+
+    # Get all User's Projects
+    projects = Project.objects.filter(user=request.user)
+
+    # Evaluate each project individually
+    for project in projects:
+        print('1Projecto original ' + str(project) + ' - Atributo complete ' + str(project.date_completed))
+        tasks_count = project.task_set.count()
+        completed_tasks_count = project.task_set.filter(date_completed__isnull=False).count()
+
+        # If the project has all tasks complete
+        if tasks_count == completed_tasks_count and tasks_count > 0:
+            project.complete = True
+            project.date_completed = timezone.now()
+            project.save()
+            print('2Proyecto modificado ' + str(project) + ' - Atributo complete ' + str(project.date_completed))
+
+        else:
+            project.complete= False
+            project.date_completed = None
+            project.save()
+            print('3Proyecto modificado ' + str(project) + ' - Atributo complete ' + str(project.date_completed))
+
+    # If Project is complete  
+    if project.complete:
+        # Filter Projects for date completed - Order by date_completed
+        projects_completed = projects.filter(user=request.user, date_completed__isnull=False).order_by('-date_completed')
+        
+        return render(request, 'project/project.html', {
+            'title': title,
+            'projects':projects_completed,
+        })
+    else:
+    # If Projects is uncomplete
+        projects = Project.objects.filter(user=request.user, date_completed__isnull=False).order_by('-date_completed')
+
+        return render(request, 'project/project.html', {
+            'title': title,
+            'projects': projects,
+        })
 
 # Show detail for proyect_id
 @login_required
@@ -105,3 +174,5 @@ def delete_project(request, project_id):
     if request.method == 'POST':
         project.delete()
         return redirect('index')
+ 
+ 

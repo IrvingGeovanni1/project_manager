@@ -18,31 +18,11 @@
             </button>
         </form>
 
-        <p>
-            <form action="{% url 'complete_project' project.project_id %}" method="POST">
-                {% csrf_token %}
-                <button>
-                    Complete
-                </button>
-            </form>    
-        </p>
-
         {% else %}
 
         <p>Category: {{ project.category }}</p>
 
         <p>Important {{ project.complete }}</p>
-
-        <p>
-            <form action="{% url 'uncomplete_project' project.project_id %}" method="POST">
-                {% csrf_token %}
-
-                <button>
-                    Uncomplete
-                </button>
-
-            </form>
-        </p>
 
     {% endif %}
 

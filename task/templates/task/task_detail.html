@@ -36,11 +36,9 @@
         <p>
             <form action="{% url 'uncomplete_task' task.id_task %}" method="POST">
                 {% csrf_token %}
-
                 <button>
                     Uncomplete
                 </button>
-                
             </form>
         </p>
     
