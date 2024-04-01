@@ -6,15 +6,17 @@
 
     {{ error }}
     
-    <form action="{% url 'create_project' %}" method="POST">
+    <form action="{% url 'create_project' %}" method="POST" enctype="multipart/form-data">
 
         {% csrf_token %}
 
-            {{form.as_p}}
+            <p>Project: {{form.name_project}}</p>
 
-            <button>
-                Save
-            </button>
+            <p>Category: {{form.category}}</p>
+
+            <p>Image: {{form.image}}</p>
+
+            <button type="submit">Save</button>
 
     </form>
 

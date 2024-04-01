@@ -16,8 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from account.views import signup, signin, signout
-from project.views import project, create_project, project_detail, complete_project, delete_project, projects_completed, uncomplete_project
+
+from django.conf import settings
+from django.conf.urls.static import static
 
 # Modulanting URLs
 urlpatterns = [
@@ -26,4 +27,4 @@ urlpatterns = [
     path('account/', include('account.urls')),
     path('projects/', include('project.urls')),
     path('tasks/', include('task.urls')),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -11,7 +11,7 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def project(request):
     title = 'Pending Projects'
-
+    print(request.user)
     # Get User's Projects
     projects = Project.objects.filter(user=request.user)
 
@@ -115,9 +115,9 @@ def project_detail(request, project_id):
         else:
              try:
                 # Update Project
-                #print(request.POST) # Impresión en consola
+                print(request.POST) # Impresión en consola
                 project = get_object_or_404(Project, pk=project_id, user=request.user)
-                form = ProjectForm(request.POST, instance=project)
+                form = ProjectForm(request.POST, request.FILES, instance=project)
                 form.save()
                 return redirect('projects')
              except ValueError:
@@ -130,13 +130,9 @@ def project_detail(request, project_id):
 # Create new Project
 @login_required
 def create_project(request):
-    if request.method == 'GET':
-        return render(request, 'project/create_project.html', {
-                  'form': ProjectForm,
-                  })
-    else:
+    if request.method == 'POST':
         try:
-            form = ProjectForm(request.POST)
+            form = ProjectForm(request.POST, request.FILES) # Included function to manage images 
             new_project = form.save(commit=False)
             new_project.user = request.user
             new_project.save()
@@ -146,6 +142,11 @@ def create_project(request):
                 'form': ProjectForm,
                 'error': 'Please provide valida data',
             })
+    else:
+        form = ProjectForm()
+        return render(request, 'project/create_project.html', {
+                  'form': form,
+                  })
 
 # Complete Project 
 @login_required
@@ -173,6 +174,6 @@ def delete_project(request, project_id):
     project = get_object_or_404 (Project, pk=project_id, user=request.user)
     if request.method == 'POST':
         project.delete()
-        return redirect('index')
+        return redirect('home')
  
  

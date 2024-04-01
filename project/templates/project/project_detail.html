@@ -8,21 +8,23 @@
 
     {% if not project.date_completed %}
 
-        <form method="POST">
+        <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
 
-            {{ form.as_p }}
+            <p>Project: {{form.name_project}}</p>
 
-            <button>
-                Update
-            </button>
+            <p>Category: {{form.category}}</p>
+
+            <p>Image: {{form.image}}</p>
+
+            <button type="submit">Update</button>
         </form>
 
         {% else %}
 
         <p>Category: {{ project.category }}</p>
 
-        <p>Important {{ project.complete }}</p>
+        <p>Complete: {{ project.complete }}</p>
 
     {% endif %}
 
@@ -54,9 +56,7 @@
     <p>
         <form action="{% url 'delete_project' project.project_id %}" method="POST">
             {% csrf_token %}
-            <button>
-                Delete Project
-            </button>
+            <button>Delete Project</button>
         </form>
     </p>
 

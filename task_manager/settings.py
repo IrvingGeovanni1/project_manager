@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'django.contrib.staticfiles', # App for Static Files
     'account',
     'main',
     'project',
@@ -139,6 +139,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+# Define the MEDIA_ROOT variable to specify the absolute path where the media files will be saved.
+MEDIA_ROOT = BASE_DIR / 'media'
+
+# Declaring the path for the media files.
+MEDIA_URL = '/public/'
 
 # Redirected to login for protect paths - See the module's urls.py file to log in.
 LOGIN_URL = '/account/signin'

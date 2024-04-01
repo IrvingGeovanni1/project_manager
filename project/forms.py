@@ -9,10 +9,7 @@ class ProjectForm(ModelForm):
         fields = [
             'name_project',
             'category',
+            'image',
             ]
-        # Create Form date type
-        """widgets = {
-            'date_complete': DateTimeInput(attrs={'type': 'date'}),
-        }"""
-
+        
 """ Los campos de prueba despues se implementarán con funciones mas complejas"""
