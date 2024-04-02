@@ -1,9 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 #from django.contrib.auth.models import User
 from account.models import User #UserCustome
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
+
+from .forms import UserForm
 
 # Create Account's views
 
@@ -54,3 +56,32 @@ def signin(request):
 def signout(request):
     logout(request)
     return redirect('home')
+
+def profile(request):
+    title ='s Profile'
+    if request.method == 'GET':
+        print('Usuario del request: ' + str(request.user))
+        user_profile = get_object_or_404(User, username = request.user)
+        print(user_profile)
+        return render(request, 'account/profile.html', {
+            'title': title,
+            'user': user_profile,
+        })
+    
+def update_profile(request):
+    user = get_object_or_404(User, pk=request.user.id)  # Obtén el usuario actual
+    if request.method == 'GET':
+        form = UserForm(instance=user)  # Crea una instancia del formulario
+        return render(request, 'account/update_profile.html', {'form': form, 'user': user})
+    else:
+        try:
+            form = UserForm(request.POST, request.FILES, instance=user)
+            if form.is_valid():
+                form.save()
+                return redirect('profile')
+        except ValueError:
+            return render(request, 'account/profile.html', {
+                'user': user,
+                'form': form,
+                'error': 'Error al actualizar el usuario',
+            })

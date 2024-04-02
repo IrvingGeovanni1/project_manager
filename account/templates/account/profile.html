@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>{{ user.first_name }}'s Profile</h1>
+
+    {% if user.profile_picture %}
+
+        <img src="{{ user.profile_picture.url }}" alt="Profile picture"> 
+    
+    {% endif %}
+
+    <p>Name: {{ user.first_name }}</p>
+
+    <p>Last name: {{ user.last_name }}</p>
+
+    <p>Email: {{ user.email }}</p>
+
+    <p><form action="{% url 'update_profile' %}">
+        <button>Update profile</button>
+    </form></p>
+
+{% endblock %}
