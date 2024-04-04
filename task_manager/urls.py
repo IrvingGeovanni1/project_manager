@@ -16,12 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
+from rest_framework.documentation import  include_docs_urls
 from django.conf import settings
 from django.conf.urls.static import static
 
 # Modulanting URLs
 urlpatterns = [
+    path('api/v1/', include('api.urls')),
+    path('docs/', include_docs_urls(title = 'Api Documentation')),
     path('admin/', admin.site.urls),
     path('home/', include('main.urls')),
     path('account/', include('account.urls')),

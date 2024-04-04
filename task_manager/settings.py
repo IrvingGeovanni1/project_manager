@@ -43,7 +43,10 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles', # App for Static Files
+    'django.contrib.staticfiles',  # App for Static Files
+    'rest_framework',
+    'coreapi',
+    'api',
     'account',
     'main',
     'project',
@@ -66,8 +69,8 @@ ROOT_URLCONF = 'task_manager.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates'), 
-                 os.path.join(BASE_DIR, 'main', 'templates'), 
+        'DIRS': [os.path.join(BASE_DIR, 'templates'),
+                 os.path.join(BASE_DIR, 'main', 'templates'),
                  os.path.join(BASE_DIR, 'project', 'templates'),
                  os.path.join(BASE_DIR, 'task', 'templates'),
                  os.path.join(BASE_DIR, 'account', 'templates')],
@@ -96,9 +99,10 @@ DATABASES = {
         'NAME': os.getenv('DB_NAME'),
         'USER': os.getenv('DB_USER'),
         'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': os.getenv('DB_HOST', 'localhost'), # Or the IP of the database server if remote
-        'PORT': os.getenv('DB_PORT',  '3306'), # The default port for MySQL
-        'OPTIONS': { # When Django establishes a new connection, which will activate Strict Mode.
+        # Or the IP of the database server if remote
+        'HOST': os.getenv('DB_HOST', 'localhost'),
+        'PORT': os.getenv('DB_PORT',  '3306'),  # The default port for MySQL
+        'OPTIONS': {  # When Django establishes a new connection, which will activate Strict Mode.
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
         },
     }
@@ -156,3 +160,8 @@ LOGIN_URL = '/account/signin'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'account.User'
+
+# Schema API's Docs
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+}
