@@ -10,5 +10,5 @@ class UserForm(ModelForm):
             'first_name',
             'last_name',
             'email',
-            'profile_picture'
+            'profile_picture',
         ]

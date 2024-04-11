@@ -12,7 +12,7 @@ from .forms import UserForm
 def signup(request):
     if request.method == 'GET':
         return render(request, 'account/signup.html', {
-        'form': UserCreationForm
+        'form': UserCreationForm,
         })
     else:
         if request.POST['password1'] == request.POST['password2']:
@@ -69,10 +69,14 @@ def profile(request):
         })
     
 def update_profile(request):
+    title_page = 'Editing profile - PM'
     user = get_object_or_404(User, pk=request.user.id)  # Obtén el usuario actual
     if request.method == 'GET':
         form = UserForm(instance=user)  # Crea una instancia del formulario
-        return render(request, 'account/update_profile.html', {'form': form, 'user': user})
+        return render(request, 'account/update_profile.html', {
+            'form': form,
+            'user': user
+            })
     else:
         try:
             form = UserForm(request.POST, request.FILES, instance=user)

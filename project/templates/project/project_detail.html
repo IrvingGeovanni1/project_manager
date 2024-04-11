@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% block title %}{{project.name_project}} (details) - PM{% endblock %}
+
 {% block content %}
 
     <h1>{{ project.name_project }}</h1>
@@ -15,7 +17,8 @@
 
             <p>Category: {{form.category}}</p>
 
-            <p>Image: {{form.image}}</p>
+            Image: <img src="{{project.image.url}}" alt="{{form.name_project}}">
+            <p>{{ form.image }}</p>
 
             <button type="submit">Update</button>
         </form>
