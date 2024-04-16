@@ -4,20 +4,24 @@
 
 {% block content %}
 
-    <h1>SIGIN</h1>
+    <h1 class="text-center infoC1">SIGIN</h1>
 
     {% csrf_token %}
 
         {{ error }}
 
-        <form action="{% url 'signin' %}" method="POST">
+        <div class=" formuT text-center">
+            <form class=" singing text-center" action="{% url 'signin' %}" method="POST">
 
-            {% csrf_token %}
+                {% csrf_token %}
 
-            {{ form.as_p }}
+                {{ form.as_p }}
 
-            <button>Signin</button>
+                <div class="entrar">
+                    <button class="btn btn-info btn-lg">Signin</button>
+                </div>
 
-        </form>
+            </form>
+        </div>
 
 {% endblock %}

@@ -4,30 +4,37 @@
 
 {% block content %}
 
-    <h1>{{ task.title }}</h1>
+    <h1 class=" H3 infoC1 text-center">{{ task.title }}</h1>
 
     {{ error }}
 
     {% if not task.date_completed %}
 
-        <form method="POST">
-            {% csrf_token %}
-
-            {{ form.as_p }}
-            
-            <button>
-                Update
-            </button>
-        </form>
-
-        <p>
-            <form action="{% url 'complete_task' task.id_task %}" method="POST">
+    <div class="formuTDA">
+            <form class="formuTD" method="POST">
                 {% csrf_token %}
-                <button>
-                    Complete
-                </button>
+
+                {{ form.as_p }}
+
+                <div class="separate">
+                    <button class="btn btn-info btn-mds">
+                        Update
+                    </button>
+                </div>
             </form>
-        </p>
+            
+         
+        
+            <p>
+                <form action="{% url 'complete_task' task.id_task %}" method="POST">
+                    {% csrf_token %}
+
+                    <button class="btn btn-info btn-md">
+                        Complete
+                    </button>
+
+                </form>
+            </p>
 
     {% else %}
 
@@ -38,7 +45,8 @@
         <p>
             <form action="{% url 'uncomplete_task' task.id_task %}" method="POST">
                 {% csrf_token %}
-                <button>
+
+                <button class="btn btn-info btn-md">
                     Uncomplete
                 </button>
             </form>
@@ -46,19 +54,28 @@
     
     {% endif %}
 
-    <p>
-        <form action="{% url 'delete_task' task.id_task %}" method="POST">
-            {% csrf_token %}
-            <button>
-                Delete Task
-            </button>
-        </form>
-    </p>
 
-    <p>Create at: {{ task.created_at|date:'M d Y' }}</p>
+            <p>
+                <form action="{% url 'delete_task' task.id_task %}" method="POST">
+                    {% csrf_token %}
 
-    <p>Update at: {{ task.updated_at|date:'M d Y' }}</p>
+                    <div class="Del">
+                        <button class="btn btn-info btn-md">
+                            Delete Task
+                        </button>
+                    </div>
 
-    <p><a href="{% url 'project_detail' task.project.project_id %}">Back to Project</a></p>
+                </form>
+            </p>
+
+            <p>Create at: {{ task.created_at|date:'M d Y' }}</p>
+
+            <p>Update at: {{ task.updated_at|date:'M d Y' }}</p>
+
+            
+                <p><a class="titulo" href="{% url 'project_detail' task.project.project_id %}">Back to Project</a></p>
+            
+
+    </div>
     
 {% endblock %}

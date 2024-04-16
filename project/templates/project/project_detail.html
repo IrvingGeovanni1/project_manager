@@ -4,67 +4,76 @@
 
 {% block content %}
 
-    <h1>{{ project.name_project }}</h1>
+    <h1 class="Text text-center">{{ project.name_project }}</h1>
 
     {{ error }}
 
     {% if not project.date_completed %}
+    
+    <div class="Global">
+    
+        <div class="formuTDA text-center align-items-center">
 
-        <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
+                <form class="text-center"  method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
 
-            <p>Project: {{form.name_project}}</p>
+                    <p>Project: {{form.name_project}}</p>
 
-            <p>Category: {{form.category}}</p>
+                    <p>Category: {{form.category}}</p>
 
-            Image: <img src="{{project.image.url}}" alt="{{form.name_project}}">
-            <p>{{ form.image }}</p>
 
-            <button type="submit">Update</button>
-        </form>
+                        Image: <img src="{{project.image.url}}" alt="{{form.name_project}}">
+                        <p>{{ form.image }}</p>
+                    
 
-        {% else %}
+                    <button class="btn btn-info btn-md" type="submit">Update</button>
+                </form>
 
-        <p>Category: {{ project.category }}</p>
+                {% else %}
 
-        <p>Complete: {{ project.complete }}</p>
+                <p>Category: {{ project.category }}</p>
 
-    {% endif %}
+                <p>Complete: {{ project.complete }}</p>
 
-    {% if tasks %}
-        <!-- código aquí para listar las tareas -->
-        <p>
-            <h3>Tasks list</h3>
+            {% endif %}
 
-            {% for task in tasks %}
+            {% if tasks %}
+                <!-- código aquí para listar las tareas -->
+                <p>
+                    <h3>Tasks list</h3>
+
+                    {% for task in tasks %}
+
+                    <p>
+                        <a href="{% url 'task_detail' task.id_task %}">
+                            {{ task.title }}
+                        </a>
+                    </p>
+
+                    {% endfor %}
+                </p>
+            {% else %}
+                <p>No hay Tareas en el Proyecto.</p>
+            {% endif %}
 
             <p>
-                <a href="{% url 'task_detail' task.id_task %}">
-                    {{ task.title }}
-                </a>
+                <form action="{% url 'create_task' %}">
+                    <button class="btn btn-info btn-md">Create Task</button>
+                </form>
             </p>
 
-            {% endfor %}
-        </p>
-    {% else %}
-        <p>No hay Tareas en el Proyecto.</p>
-    {% endif %}
+            <p>
+                <form action="{% url 'delete_project' project.project_id %}" method="POST">
+                    {% csrf_token %}
+                    <button class="btn btn-info btn-md">Delete Project</button>
+                </form>
+            </p>
 
-    <p>
-        <form action="{% url 'create_task' %}">
-            <button>Create Task</button>
-        </form>
-    </p>
+            <p>Created at: {{ project.created_at|date:'M d Y'  }}</p>
 
-    <p>
-        <form action="{% url 'delete_project' project.project_id %}" method="POST">
-            {% csrf_token %}
-            <button>Delete Project</button>
-        </form>
-    </p>
+            <p>Updated at: {{ project.updated_at|date:'M d Y'  }}</p>
 
-    <p>Created at: {{ project.created_at|date:'M d Y'  }}</p>
+        </div>
 
-    <p>Updated at: {{ project.updated_at|date:'M d Y'  }}</p>
-        
+    </div>    
 {% endblock %}

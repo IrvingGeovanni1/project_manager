@@ -3,18 +3,23 @@
 {% block title %}Sing Up - PM{% endblock %}
 
 {% block content %}
-    <h1>SIGNUP</h1>
+    <h1 class="infoC1 text-center">SIGNUP</h1>
 
         {{ error }}
-        
-    <form action="{% url 'signup' %}" method="POST">
-        
-        {% csrf_token %}
-        
-        {{ form.as_p }}
 
-        <button>Signup</button>
+        
+            <form class="formuT" action="{% url 'signup' %}" method="POST">
+                <div class="ingresar">
+                    {% csrf_token %}
+                    
+                    {{ form.as_p }}
 
-    </form>
+                </div>
+                <div class="sup">
+                    <button class="btn btn-info">Signup</button>
+                </div>
+
+            </form>
+        
 
 {% endblock %}    

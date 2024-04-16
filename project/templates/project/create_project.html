@@ -4,22 +4,29 @@
 
 {% block content %}
 
-    <h1>CREATE NEW PROJECT</h1>
+    <h1 class="TitleT text-center">CREATE NEW PROJECT</h1>
 
     {{ error }}
-    
-    <form action="{% url 'create_project' %}" method="POST" enctype="multipart/form-data">
 
-        {% csrf_token %}
+    <div class="formuT">
+        <form class="CNP" action="{% url 'create_project' %}" method="POST" enctype="multipart/form-data">
 
-            <p>Project: {{form.name_project}}</p>
+            {% csrf_token %}
 
-            <p>Category: {{form.category}}</p>
+            <div class="createP ">
 
-            <p>Image: {{form.image}}</p>
+                <p class="pro">Project: {{form.name_project}}</p>
 
-            <button type="submit">Save</button>
+                <p class="cat">Category: {{form.category}}</p>
 
-    </form>
+                <p class="img">Image: {{form.image}}</p>
+            </div>
+            <div class="submit text-center ">
+
+                <button type="submit" class="btn btn-info btn-lg">Save</button>
+            </div>
+
+        </form>
+    </div>
 
 {% endblock %}

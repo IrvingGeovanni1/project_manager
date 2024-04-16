@@ -4,7 +4,7 @@
 
 {% block content %}
 
-    <h1>{{ title }}</h1>
+    <h1 class="ProjectTitle text-center">{{ title }}</h1>
 
     {% if tasks %}
 
@@ -13,25 +13,36 @@
 
             {# {% if task.project.user == user %} #}
 
+            <div class="info2">
+
                 <li>
-                    <a href="{% url 'task_detail' task.id_task %}">
-                        {{ task.title }}
-                    </a>
+                    <div class="Ptitle">
+                        <a class="titulo" href="{% url 'task_detail' task.id_task %}">
+                            {{ task.title }}
+                        </a>
+                    </div>
 
-                    <p>{{ task.description }}</p>
+                    <div class="informacion2">
 
-                    <p>Completado en:
-                        {% if task.date_completed %}
-                            {{ task.date_completed }}</p>
-                        {% endif %}
+                        <p>{{ task.description }}</p>
 
-                    <p>{{ task.project.name_project }}</p>
+                        <p>Completado en:
+                            {% if task.date_completed %}
+                                {{ task.date_completed }}</p>
+                            {% endif %}
 
-                    <p>Created at: {{ task.created_at|date:'M d Y' }}</p>
+                        <p>{{ task.project.name_project }}</p>
 
-                    <p>Update at: {{ task.updated_at|date:'M d Y' }}</p>
+                        <p>Created at: {{ task.created_at|date:'M d Y' }}</p>
+
+                        <p>Update at: {{ task.updated_at|date:'M d Y' }}</p>
+
+                    </div>
+
                     
                 </li>
+
+            </div>
             
             {# {% endif %} #}
             {% endfor %}
@@ -39,7 +50,9 @@
     
     {% else %}
 
-        <p>There aren't {{ title }}</p>
+        <div class="infoC1 text-center">
+            <p>There aren't {{ title }}</p>
+        <div>
 
     {% endif %}
 

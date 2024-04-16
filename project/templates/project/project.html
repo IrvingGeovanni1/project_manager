@@ -4,25 +4,44 @@
 
 {% block content %}
 
-    <h1>{{ title }}</h1>
+    <h1 class="ProjectTitle text-center">{{ title }}</h1>
 
     {% if projects %}
 
-        <ul>
+        <ul class="infoP text-center">
 
             {% for project in projects %}
-            <li>
-                <a href="{% url 'project_detail' project.project_id %}">
+
+            <li class="info2">
+              <div class="Ptitle">
+                <a class="titulo" href="{% url 'project_detail' project.project_id %}">
                     {{project.name_project}}
                 </a>
-
-                    <p>Category: {{ project.category }}</p>
+              </div>
+              <div class="container">
+                <div class="row justify-content-center">
+                  <div class="col-md-6">
+                    <div class="informacion">
+                      <p>Category: {{ project.category }}</p>
+                      <p>Date Completed: {{ project.date_completed|date:'M d Y' }}</p>
+                      <p>Created at: {{ project.created_at|date:'M d Y' }}</p>
+                      <p>Updated at: {{ project.updated_at|date:'M d Y' }}</p>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="image d-flex justify-content-end align-items-center">
+                       <img src="{{project.image.url}}" alt="{{form.name_project}}" class="img-fluid">
+                    </div>
+                  </div>
+                </div>
+              </div>
+                
+                
                     
-                    <p>Date Completed: {{ project.date_completed|date:'M d Y' }}</p>
+                    
 
-                    <p>Created at: {{ project.created_at|date:'M d Y' }}</p>
-
-                    <p>Updated at: {{ project.updated_at|date:'M d Y' }}</p>
+            
+                
             </li>
             {% endfor %}
 
@@ -30,7 +49,10 @@
 
     {% else %}
 
-        <p>There aren't {{ title }}</p>
+        
+        <div class="infoC1 text-center">
+            <p>There aren't {{ title }}</p>
+        </div>
 
     {% endif %}
 {% endblock %}

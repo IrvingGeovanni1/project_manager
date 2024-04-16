@@ -1,0 +1,176 @@
+.fondito{
+    background-color: #EFFFFD;
+}
+.navbar{
+    background-color: #27496D;
+    padding-bottom: 40px;
+    list-style-type: none;
+    flex-shrink: 0;
+    margin: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #ffffff;
+
+}
+.Title{
+    padding-top: 250px;
+    position: relative;
+    color: black;
+}
+.Text{
+    padding-bottom: 40px;
+    color: black;
+}
+.ProjectTitle{
+    padding: 30px;
+    color: black;
+}
+.infoP{
+    list-style-type: none;
+    text-align: right;
+}
+.info2{
+    text-align: left;
+    background-color: #27496D;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 24px;
+    width: 1277px;
+    height: 266px;
+    font-size: 19px;
+    font-style: normal;
+    margin-top: 20px;
+    
+}
+.informacion{
+    
+    padding-left: 20px;
+    padding-top: 31px;
+    color: #ffffff;
+}
+.Ptitle{
+    padding-left: 20px;
+    padding-top: 5px;
+}
+.infonav{
+    color: #ffffff;
+}
+.titulo{
+    color: #ffffff;
+}
+.informacion2{
+    padding-left: 20px;
+    padding-top: 5px;
+}
+.infoC1{
+    color: black;
+}
+.TitleT{
+    color:black;
+    padding: 10px;
+}
+.formuT{
+    background-color: #27496D;
+    width: 1048px;
+    height: 508px;
+    margin-left: auto;
+    margin-right: auto;
+    flex-shrink: 0;
+    border-radius: 19px;
+    margin-top: 20px;
+
+    
+}
+.form{
+    padding-top: 65px;
+    text-align: start;
+}
+.save{
+    padding: 14px;
+    padding-left: 670px;
+    width: 273px;
+    height: 98px;
+}
+.xfo{
+    padding-left: 10px;
+}
+.space{
+    padding-top: 10px;
+}
+.Nproject{
+    padding: 50px;
+
+}
+.CNP{
+    padding-top:100px ;
+    font-size: 25px;
+    margin-top: 40px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+.pro{
+    margin-bottom: 70px;
+}
+.cat{
+    margin-bottom: 70px;
+}
+.img{
+    margin-bottom: 40px;
+}
+.createP{
+    padding-left: 191px;
+}
+.submit{
+    padding-left: 30px;
+}
+.singing{
+    padding-top: 170px;
+    font-size: 25px;
+}
+.entrar{
+    padding-left: 340px;
+}
+.image{
+    width: 200px;
+    height: 200px;
+}
+.ingresar{
+    padding-left: 30px;
+    padding-top: 70px;
+    font-size: 20px;
+}
+.sup{
+    padding-left: 20px;
+}
+.formuTDA{
+    background-color: #27496D;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 24px;
+    color: rgb(255, 255, 255);
+    width: 1048px;
+    padding-top: 25px;
+    padding-left: 40px;
+   
+}
+.UpCom{
+    padding-left: 20px;
+}
+.info3{
+    color: rgb(255, 255, 255);
+}
+.Del{
+    padding-left: 20px;
+}
+.separate{
+    margin-right:10px ;
+}
+.formuTDC{
+    padding-top: 30px;
+    background-color: #27496D;
+    border-radius: 20px;
+    width: 1048px;
+    height: 900px;
+    padding-left: 50px;
+    position: relative;
+}

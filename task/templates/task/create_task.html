@@ -4,18 +4,24 @@
 
 {% block content %}
 
-    <h1>CREATE NEW TASK</h1>
+    <h1 class="TitleT text-center">CREATE NEW TASK</h1>
 
     {{ error }}
 
-    <form action="{% url 'create_task' %}" method="POST">
+    <div class="formuT text-center aling-items">
+        <form class="form" action="{% url 'create_task' %}" method="POST">
 
-        {% csrf_token %}
+            {% csrf_token %}
+            <div class="xfo text-center">
+             {{ form.as_p }}
+            </div>
 
-        {{ form.as_p }}
 
-        <button>
-            Save
-        </button>
-    </form>
+            <div class="save">
+                <button class="btn btn-info">
+                    Save
+                </button>
+            </div>
+        </form>
+    </div>
 {% endblock %}
