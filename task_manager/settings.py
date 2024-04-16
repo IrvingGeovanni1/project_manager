@@ -146,11 +146,9 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 #SATITCFILES_DIRS = (os.path.join(BASE_DIR, 'task_manager/static'),)
-<<<<<<< HEAD
+
 
 STATICFILES_DIRS = [BASE_DIR / 'static']
-
-=======
 
 
 # Define the MEDIA_ROOT variable to specify the absolute path where the media files will be saved.
