@@ -16,48 +16,48 @@
           <div class="infonav">  
             <ul class="navbar">
                     <li class="home">
-                        <a class="home navbar-brand" href="{% url 'home' %}">
+                        <a class="home navbar-brand" id="navlist" href="{% url 'home' %}">
                             Home
                         </a>
                     </li>
                 <li class="Project_P">
-                    <a class="navbar-brand" href="{% url 'projects' %}">
+                    <a class="navbar-brand" id="navlist" href="{% url 'projects' %}">
                         Projects Pending
                     </a>
                 </li>
-                <li class=" Proyect C">
-                    <a class="navbar-brand" href="{% url 'projects_completed' %}">
+                <li class=" Proyect C navlist">
+                    <a class="navbar-brand navlist" id="navlist" href="{% url 'projects_completed' %}">
                         Projects Complete
                     </a>
                 </li>
                 <li class="Create P">
-                    <a class="navbar-brand" href="{% url 'create_project' %}">Create project</a>
+                    <a class="navbar-brand" id="navlist" href="{% url 'create_project' %}">Create project</a>
                 </li>
                 <li class="Task p">
-                    <a class="navbar-brand" href="{% url 'tasks' %}">Tasks Pending</a>
+                    <a class="navbar-brand" id="navlist" href="{% url 'tasks' %}">Tasks Pending</a>
                 </li>
                 <li>
-                    <a class="navbar-brand" href="{% url 'tasks_completed' %}">Tasks Completed</a>
+                    <a class="navbar-brand" id="navlist" href="{% url 'tasks_completed' %}">Tasks Completed</a>
                 </li>
                 <li>
-                    <a class="navbar-brand" href="{% url 'create_task' %}">
+                    <a class="navbar-brand" id="navlist" href="{% url 'create_task' %}">
                         Create Task
                     </a>
                 </li>
                 {% if user.is_authenticated %}
                 <li>
-                    <a class="navbar-brand" href="{% url 'logout' %}">
+                    <a class="navbar-brand" id="navlist" href="{% url 'logout' %}">
                         Logout
                     </a>
                 </li>
                 {% else %}
                 <li>
-                    <a class="navbar-brand" href="{% url 'signin' %}">
+                    <a class="navbar-brand" id="navlist" href="{% url 'signin' %}">
                         Signin
                     </a>
                 </li>
                 <li>
-                    <a class="navbar-brand" href="{% url 'signup' %}">
+                    <a class="navbar-brand" id="navlist" href="{% url 'signup' %}">
                         Signup
                     </a>
                 </li>
