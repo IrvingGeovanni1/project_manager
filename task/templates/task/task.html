@@ -4,11 +4,11 @@
 
 {% block content %}
 
-    <h1 class="ProjectTitle text-center">{{ title }}</h1>
+    <h1 class="ProjectTitle text-center animate__animated animate__slideInDown">{{ title }}</h1>
 
     {% if tasks %}
 
-        <ul>
+        <ul class="animate__animated animate__zoomInDown">
             {% for task in tasks %}
 
             {# {% if task.project.user == user %} #}
@@ -50,7 +50,7 @@
     
     {% else %}
 
-        <div class="infoC1 text-center">
+        <div class="infoC1 text-center animate__animated animate__slideInLeft">
             <p>There aren't {{ title }}</p>
         <div>
 

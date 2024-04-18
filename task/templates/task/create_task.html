@@ -4,11 +4,11 @@
 
 {% block content %}
 
-    <h1 class="TitleT text-center">CREATE NEW TASK</h1>
+    <h1 class="TitleT text-center animate__animated animate__bounceInRight">CREATE NEW TASK</h1>
 
     {{ error }}
 
-    <div class="formuT text-center aling-items">
+    <div class="formuT text-center aling-items animate__animated animate__fadeInUpBig">
         <form class="form" action="{% url 'create_task' %}" method="POST">
 
             {% csrf_token %}
@@ -18,7 +18,7 @@
 
 
             <div class="save">
-                <button class="btn btn-info">
+                <button class="BSave btn btn-info btn-lg">
                     Save
                 </button>
             </div>

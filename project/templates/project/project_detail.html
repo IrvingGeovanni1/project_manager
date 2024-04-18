@@ -4,76 +4,82 @@
 
 {% block content %}
 
-    <h1 class="Text text-center">{{ project.name_project }}</h1>
+    <h1 class="Text text-center animate__animated animate__backInRight">{{ project.name_project }}</h1>
 
     {{ error }}
 
     {% if not project.date_completed %}
     
-    <div class="Global">
+
     
-        <div class="formuTDA text-center align-items-center">
+        <div class="Global animate__animated animate__backInRight">
+            <div class="row justify-content-center align-items-center">
+                <!-- Primer formulario -->
+                <div class="col-md-4"> <!-- Ajusta el tamaño de la columna según tus necesidades -->
+                    <div class="formuTDA text-center align-items-center">
 
-                <form class="text-center"  method="POST" enctype="multipart/form-data">
-                    {% csrf_token %}
+                        <form class="text-center " method="POST" enctype="multipart/form-data">
 
-                    <p>Project: {{form.name_project}}</p>
+                            {% csrf_token %}
+                                <p>Project: {{form.name_project}}</p>
+                                <p>Category: {{form.category}}</p>
 
-                    <p>Category: {{form.category}}</p>
+                            Image: <img src="{{project.image.url}}" alt="{{form.name_project}}">
+
+                                <p>{{ form.image }}</p>
+                            <button class="btn btn-info btn-md" type="submit">Update</button>
+                        </form>
+                    </div>
+                </div>
+        
+                <!-- Información del proyecto -->
+                <div class="col-md-4"> <!-- Ajusta el tamaño de la columna según tus necesidades -->
+                    <div class="formuTDA text-center align-items-center">
+                            <p>Category: {{ project.category }}</p>
+                            <p>Complete: {{ project.complete }}</p>
 
 
-                        Image: <img src="{{project.image.url}}" alt="{{form.name_project}}">
-                        <p>{{ form.image }}</p>
-                    
+                        {% endif %}
+                        {% if tasks %}
+                
+                                <div class="formuTV">
+                                        <h3 class="space text-center">Tasks list</h3>
+                                    {% for task in tasks %}
 
-                    <button class="btn btn-info btn-md" type="submit">Update</button>
-                </form>
 
-                {% else %}
+                                        <p class="space text-center"><a href="{% url 'task_detail' task.id_task %}">{{ task.title }}</a></p>
+                                    {% endfor %}
 
-                <p>Category: {{ project.category }}</p>
 
-                <p>Complete: {{ project.complete }}</p>
+                                    {% else %}
 
-            {% endif %}
 
-            {% if tasks %}
-                <!-- código aquí para listar las tareas -->
-                <p>
-                    <h3>Tasks list</h3>
 
-                    {% for task in tasks %}
+                                    <p class=" space animate__animated animate__bounceIn">No hay Tareas en el Proyecto.</p>
 
-                    <p>
-                        <a href="{% url 'task_detail' task.id_task %}">
-                            {{ task.title }}
-                        </a>
-                    </p>
 
-                    {% endfor %}
-                </p>
-            {% else %}
-                <p>No hay Tareas en el Proyecto.</p>
-            {% endif %}
+                                    {% endif %}
 
-            <p>
-                <form action="{% url 'create_task' %}">
-                    <button class="btn btn-info btn-md">Create Task</button>
-                </form>
-            </p>
 
-            <p>
-                <form action="{% url 'delete_project' project.project_id %}" method="POST">
-                    {% csrf_token %}
-                    <button class="btn btn-info btn-md">Delete Project</button>
-                </form>
-            </p>
+                                    <!--segundo formulario-->
+                                    <form class="space text-center" action="{% url 'create_task' %}">
+                                        <button class="btn btn-info btn-md">Create Task</button>
+                                    </form>
 
-            <p>Created at: {{ project.created_at|date:'M d Y'  }}</p>
+                                    <!--tercer formulario-->
+                                    <form class="space text-center" action="{% url 'delete_project' project.project_id %}" method="POST">
 
-            <p>Updated at: {{ project.updated_at|date:'M d Y'  }}</p>
+                                {% csrf_token %}
 
+                                        <button class="btn btn-info btn-md">Delete Project</button>
+                                    </form>
+
+                                        <p>Created at: {{ project.created_at|date:'M d Y'  }}</p>
+                                        <p>Updated at: {{ project.updated_at|date:'M d Y'  }}</p>
+                                </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-    </div>    
+        
 {% endblock %}

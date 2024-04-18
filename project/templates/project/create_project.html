@@ -4,16 +4,16 @@
 
 {% block content %}
 
-    <h1 class="TitleT text-center">CREATE NEW PROJECT</h1>
+    <h1 class="TitleT text-center animate__animated animate__backInRight">CREATE NEW PROJECT</h1>
 
     {{ error }}
 
-    <div class="formuT">
+    <div class="formuD animate__animated animate__backInUp">
         <form class="CNP" action="{% url 'create_project' %}" method="POST" enctype="multipart/form-data">
 
             {% csrf_token %}
 
-            <div class="createP ">
+            <div class="createP">
 
                 <p class="pro">Project: {{form.name_project}}</p>
 
@@ -21,7 +21,7 @@
 
                 <p class="img">Image: {{form.image}}</p>
             </div>
-            <div class="submit text-center ">
+            <div class="submit text-center">
 
                 <button type="submit" class="btn btn-info btn-lg">Save</button>
             </div>

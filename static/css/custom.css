@@ -20,6 +20,7 @@
 .Text{
     padding-bottom: 40px;
     color: black;
+
 }
 .ProjectTitle{
     padding: 30px;
@@ -71,15 +72,45 @@
 }
 .formuT{
     background-color: #27496D;
-    width: 1048px;
-    height: 508px;
+    width: 882px;
+    height: 682px;
     margin-left: auto;
     margin-right: auto;
-    flex-shrink: 0;
     border-radius: 19px;
     margin-top: 20px;
+    margin-bottom: 20px;
 
     
+}
+.formuD{
+    background-color: #27496D;
+    width: 882px;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 19px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.formuC{
+    background-color: #27496D;
+    width: 577px;
+    height: 364px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 19px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.formuA{
+    background-color: #27496D;
+    width: 980px;
+    height: 463px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 19px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 .form{
     padding-top: 65px;
@@ -90,9 +121,12 @@
     padding-left: 670px;
     width: 273px;
     height: 98px;
+    padding-top: 40px;
 }
 .xfo{
     padding-left: 10px;
+    font-size: 25px;
+    padding-right: 70px;
 }
 .space{
     padding-top: 10px;
@@ -105,27 +139,30 @@
     padding-top:100px ;
     font-size: 25px;
     margin-top: 40px;
-    margin-left: 40px;
+    margin-left: -5px;
     margin-right: 40px;
 }
 .pro{
-    margin-bottom: 70px;
+    margin-bottom: 14px;
+    padding-bottom: 0px;
 }
 .cat{
     margin-bottom: 70px;
 }
 .img{
-    margin-bottom: 40px;
+    margin-bottom: 45px;
+    padding-top: 10px;
 }
 .createP{
     padding-left: 191px;
 }
 .submit{
-    padding-left: 30px;
+    padding-left: 730px;
+    padding-top: 60px;
 }
 .singing{
-    padding-top: 170px;
-    font-size: 25px;
+    padding-top: 116px;
+    font-size: 24px;
 }
 .entrar{
     padding-left: 340px;
@@ -140,7 +177,8 @@
     font-size: 20px;
 }
 .sup{
-    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 35px;
 }
 .formuTDA{
     background-color: #27496D;
@@ -148,10 +186,21 @@
     margin-right: auto;
     border-radius: 24px;
     color: rgb(255, 255, 255);
-    width: 1048px;
+    width: 577px;
+    height: 728px;
     padding-top: 25px;
-    padding-left: 40px;
-   
+    padding-right: 106px;
+}
+.formuTDB{
+    background-color: #27496D;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 24px;
+    color: rgb(255, 255, 255);
+    width: 577px;
+    height: 663px;
+    padding-top: 25px;
+    padding-right: 106px;
 }
 .UpCom{
     padding-left: 20px;
@@ -166,14 +215,43 @@
     margin-right:10px ;
 }
 .formuTDC{
-    padding-top: 30px;
     background-color: #27496D;
-    border-radius: 20px;
-    width: 1048px;
-    height: 900px;
-    padding-left: 50px;
-    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 24px;
+    color: rgb(255, 255, 255);
+    height: 662px;
+    width: 559px;
 }
 #navlist{
     color: #ffffff;
+}
+.input-small{
+    font-size: 12px;
+}
+.createP{
+    font-size: 25px;
+}
+.formuTD{
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+.formuTV{
+    background-color: #27496D;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 24px;
+    color: rgb(255, 255, 255);
+    height: 290px;
+    width: 559px;
+}
+.Dos{
+    padding-bottom: 20px;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+.Com{
+    padding-bottom: 20px;
+    padding-top: 20px;
+    padding-left: 20px;
 }

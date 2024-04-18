@@ -4,15 +4,16 @@
 
 {% block content %}
 
-    <h1 class="ProjectTitle text-center">{{ title }}</h1>
+    <h1 class="ProjectTitle text-center animate__animated animate__backInUp">{{ title }}</h1>
 
     {% if projects %}
+
 
         <ul class="infoP text-center">
 
             {% for project in projects %}
 
-            <li class="info2">
+            <li class="info2 animate__animated animate__fadeInLeftBig">
               <div class="Ptitle">
                 <a class="titulo" href="{% url 'project_detail' project.project_id %}">
                     {{project.name_project}}
@@ -50,7 +51,7 @@
     {% else %}
 
         
-        <div class="infoC1 text-center">
+        <div class="infoC1 text-center animate__animated animate__backInRight">
             <p>There aren't {{ title }}</p>
         </div>
 
